@@ -1,4 +1,4 @@
-data,dolar,anterior,antes_de_ontem,var,arroz,real
+date,dollar,yesterday,before_yesterday,variation,arroz,price
 06/01/2010,1.74,20.4,20.39,-0.01,31.71,20.25
 07/01/2010,1.75,20.25,20.4,0.15,32.13,20.28
 08/01/2010,1.73,20.28,20.25,-0.03,32.19,20.18
