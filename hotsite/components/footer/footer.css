@@ -1,8 +1,9 @@
-footer{
-    background-color: #DED714;
-    display: flex;
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height: 7%;
+/* .footer{
+    bottom: 0;
+} */
+
+.linkedin {
+    max-width: 30%;
+    height: auto;
+    right: 0;
 }
