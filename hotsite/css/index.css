@@ -3,7 +3,7 @@
     display: flex; 
     padding: 1rem;
     width: 100%;
-    position: absolute;
+    position: fixed;
     justify-content: center;
     align-items: center;
     color: White;
@@ -21,7 +21,7 @@
 }
 
 .sideBar{
-    top: 1%;
+    top: 0.9%;
     border-right: 2px solid #7777a7;
     position: relative;
     justify-content: center;
@@ -30,6 +30,7 @@
 .content{
     position: relative;
     top: 1%;
+    scroll-margin-top: inherit;
     max-width: 95%;
 }
 
@@ -80,7 +81,7 @@ footer{
 .resultados {
     width: 85%;
     margin-left: 8.5%;
-    height: 7.5%;
+    height: 7%;
 }
 
 .github {
