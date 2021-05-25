@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"crossorigin="anonymous">
+<link rel="stylesheet" href="../css/index.css">
+
+<header>
+    <div class="header" >Documentação de Análises de Regressão na Cotação Diária do Café Arábica e Milho</div>
+</header>
+  
+<body>
+    <div class="page">
+        <div class="row">
+            <div class="col-2 col-sm-4 col-md-2 sideBar pt-4 affix">
+                <div style="position: fixed;">
+                <ul class="text-left">
+                    <li><a href="#Introdução">1. Introdução</a></li>
+                    <li><a href="#Metodologia">2. Metodologia</a></li>
+                    <li class="pl-3"><a href="#Dados">2.1 Dados</a></li>
+                    <li class="pl-3"><a href="#Features">2.2 Features e target</a></li>
+                    <li class="pl-3"><a href="#Series">2.3 Séries Temporais</a></li>
+                    <l><a href="#Culturas">3. Resultados</a></li>
+                    <li class="pl-3"><a href="#Café1">3.1 Café Arábica</a></li>
+                    <li class="pl-3"><a href="#Milho1">3.2 Milho</a></li>
+                </ul>
+            </div>
+            </div>
+
+            <div class="col-10 col-sm-8 col-md-10 content pt-4 pl-5">
+                <h3><a name="Introdução"></a>Introdução</h3>
+                    <p>
+                        Com a chegada do Agro 4.0 e a alta importância do setor na economia do Brasil, 
+                        sistemas como o de suporte à decisão (Aprendizado de Máquinas) tem permitido 
+                        soluções em todas as áreas do agronegócio. Sabendo que as culturas de grãos 
+                        do café e milho são importantes produtos agrícolas, o presente estudo visa 
+                        avaliar os algoritmos Linear Regression, Multilayer Perceptron Regressor e 
+                        Naive Bayes aplicados em modelos de aprendizado de máquina que possuem melhor 
+                        desempenho aplicados com dados históricos da cotação diária das culturas, 
+                        seguindo a sua respectiva série temporal.
+                    </p>
+                    <p>
+                        Tomando como parâmetro de eficácia 
+                        o coeficiente de determinação (R² score) e o erro médio absoluto (MAE), os 
+                        algoritmos obtiveram 0.95 de R² score, ou seja o desempenho do algoritmo foi  
+                        satisfatório, por fim foi desenvolvido um hotsite com os presentes resultados 
+                        e os processos descritos no decorrer do trabalho.
+                    </p>
+                <h3><a name="Metodologia"></a>Metodologia</h3>
+                    <h6><a name="Dados" class="subTitle"></a>Dados</h6>
+                        <p>
+                            Os dados referentes ao histórico diário da saca do café arábica e do milho são oriundos do 
+                            Centro de Estudos Avançados em Economia Aplicada (CEPEA/Esalq). A outra fonte é o site 
+                            Investing Brasil - Finanças, Câmbio e Bolsa de Valores (INVESTING, 2021), onde foi 
+                            extraído o histórico diário do preço em reais do dólar americano.
+                        </p>
+                    <h6><a name="Features" class="subTitle"></a>Features e target</h6>
+                        <p>
+                            Com base nos dados coletados, durante o processo de experimento e análise das features, 
+                            houve o processo em que foram elaboradas novas features. Para essa elaboração, não envolve 
+                            nenhum dado a mais, somente diferentes perspectivas dos mesmos, como levar em conta o preço 
+                            de um e dois dias anteriores e a sua variação tanto em real quanto em dólares. Em seguida 
+                            foram separadas features e target de acordo com o dataset de sua respectiva cultura.
+                        </p>
+                    <h6><a name="Series" class="subTitle"></a>Séries Temporais</h6>
+                        <p>
+                            Devido ao dataset ser temporal, o conjunto de dados foi dividido em conjunto de treinamento 
+                            e conjunto de teste de maneira que a divisão possui um intervalo anual, ou seja, treinamos 
+                            com os dados referentes a um ano, para testar (prever) o valores com os dados referentes ao 
+                            ano seguinte.
+                        </p>
+                        <table>
+                            <tr>
+                                <th>Execução do modelo</th>
+                                <th>Treino</th>
+                                <th>Teste</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    2012
+                                </td>
+                                <td>
+                                    2013
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    2
+                                </td>
+                                <td>
+                                    2012, 2013
+                                </td>
+                                <td>
+                                    2014
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    3
+                                </td>
+                                <td>
+                                    2012, 2013, 2014
+                                </td>
+                                <td>
+                                    2015
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                    <h6><a name="Cafe" class="subTitle"></a>Café Arábica</h6>
+                        <p>
+                            As features utilizadas foram: preço em real do dia anterior (brl_price_yesterday), preço em 
+                            real do dia precedente ao anterior (brl_price_yesterday-1), variação em reais dos dois dias 
+                            anteriores (var_brl_price_yesterday), variação em dólares dos dois dias anteriores 
+                            (var_usd_price_yesterday) e o preço do câmbio do real para o dólar (usd). Sendo nosso 
+                            target o preço da saca em reais (brl_price).
+                        </p>
+                        <table>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Definição</th>
+                                <th>Tipo</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    date
+                                </td>
+                                <td>
+                                    index
+                                </td>
+                                <td>
+                                    date
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    brl_price_yesterday
+                                </td>
+                                <td>
+                                    feature
+                                </td>
+                                <td>
+                                    float
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    brl_price_yesterday-1
+                                </td>
+                                <td>
+                                    feature
+                                </td>
+                                <td>
+                                    float
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    var_brl_price_yesterday
+                                </td>
+                                <td>
+                                    feature
+                                </td>
+                                <td>
+                                    float
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    var_usd_price_yesterday
+                                </td>
+                                <td>
+                                    feature
+                                </td>
+                                <td>
+                                    float
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    usd
+                                </td>
+                                <td>
+                                    feature
+                                </td>
+                                <td>
+                                    float
+                                </td>
+                            </tr>                
+                            <tr>
+                                <td>
+                                    brl_price
+                                </td>
+                                <td>
+                                    target
+                                </td>
+                                <td>
+                                    float
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                    <h6><a name="Milho" class="subTitle"></a>Milho</h6>
+                        <p>
+                            As features utilizadas foram: data da cotação (date), valor da cotação do dólar (dollar), 
+                            preço da saca de milho do dia anterior (yesterday), preço da saca antes de ontem 
+                            (before_yesterday), variação do preço entre a feature yesterday e before_yesterday,
+                            valor da saca do arroz (arroz) e sendo o valor da saca do milho da moeda no dia respectivo 
+                            (price) como target.
+                        </p>
+                        <table>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Definição</th>
+                                <th>Tipo</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    date
+                                </td>
+                                <td>
+                                    index
+                                </td>
+                                <td>
+                                    date
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    yesterday
+                                </td>
+                                <td>
+                                    feature
+                                </td>
+                                <td>
+                                    float
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    before_yesterday
+                                </td>
+                                <td>
+                                    feature
+                                </td>
+                                <td>
+                                    float
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    arroz
+                                </td>
+                                <td>
+                                    feature
+                                </td>
+                                <td>
+                                    float
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    price
+                                </td>
+                                <td>
+                                    feature
+                                </td>
+                                <td>
+                                    float
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <br>
+                <h3><a name="Culturas"></a>Resultados</h3>
+                    <p>
+                        Após a término dos ajustes dos modelos dos algoritmos foi obtido os resultados 
+                        R²_score (coeficiente de determinação) responsável por determinar o quão bem o 
+                        modelo se ajusta com o valor target e o valor mean_absolute_error.A análise dos 
+                        resultados se baseiam em cima do parâmetro para determinar quão satisfatório o 
+                        coeficiente de determinação tem o seu valor ser próximo de 1.  
+                    </p>
+                    <br>
+                    <h6><a name="Café1" class="subTitle"></a>Café Arábica</h6>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>R²_score</th>
+                            <th>mean_absolute_error</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Regressão Linear
+                            </td>
+                            <td>
+                                0.9825
+                            </td>
+                            <td>
+                                4.2765
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                MLP
+                            </td>
+                            <td>
+                                0.9815
+                            </td>
+                            <td>
+                                4.4169
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Bayers
+                            </td>
+                            <td>
+                                0.9825
+                            </td>
+                            <td>
+                                4.2773
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <h5 style="text-align: center;">Gráfico - Regressão Linear (Café Arábica)</h5>
+                    <img class="resultados" src="../image/regressao-linear.png" />
+                    <br>
+
+                    <br>
+                    <h5 style="text-align: center;">Gráfico - MLP (Café Arábica)</h5>
+                    <img class="resultados" src="../image/mlpCafe.png" />
+                    <br>
+
+                    <br>
+                    <h5 style="text-align: center;">Gráfico - Bayers (Café Arábica)</h5>
+                    <img class="resultados" src="../image/bayersCafe.png" />
+                    <br>
+
+                    <br>
+                    <h5 style="text-align: center;">Gráfico - Relaçâo dos Algoritmos (Café Arábica)</h5>
+                    <img class="resultados" src="../image/todos-modelos.png" />
+                    <br>
+                    <br>
+                    <br>
+                    <h6><a name="Milho1" class="subTitle"></a>Milho</h6>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>R²_score</th>
+                            <th>mean_absolute_error</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Regressão Linear
+                            </td>
+                            <td>
+                                0.9970
+                            </td>
+                            <td>
+                                0.4486
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                MLP
+                            </td>
+                            <td>
+                                0.9955
+                            </td>
+                            <td>
+                                0.5507
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Bayers
+                            </td>
+                            <td>
+                                0.9970
+                            </td>
+                            <td>
+                                0.4487
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <h5 style="text-align: center;">Gráfico - Regressão Linear (Milho)</h5>
+                    <img class="resultados" src="../image/linear.png" />
+                    <br>
+
+                    <br>
+                    <h5 style="text-align: center;">Gráfico - MLP (Milho)</h5>
+                    <img class="resultados" src="../image/MLP.png" />
+                    <br>
+
+                    <br>
+                    <h5 style="text-align: center;">Gráfico - Bayers (Milho)</h5>
+                    <img class="resultados" src="../image/Bayers.png" />
+                    <br>
+
+                    <br>
+                    <h5 style="text-align: center;">Gráfico - Relaçâo dos Algoritmos (Milho)</h5>
+                    <img class="resultados" src="../image/resultadoMilho.png" />
+                    <br>
+            </div> 
+    </div> 
+</body>
+<footer>
+    <a href="https://github.com/MTeodoroV/Tcc-bdag" target="_blank">
+        <img class="github" src="../image/gitHub.png" /> 
+    </a>
+    
+</footer>
+</html>
